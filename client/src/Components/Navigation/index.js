@@ -11,7 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./Styles";
-import logo from "../../Images/logo.svg";
+
 function Navigation(props) {
   const navItems = ["Physics", "Maths", "Chemistry", "Biology"];
   const homeItems = ["Register", "Login"];

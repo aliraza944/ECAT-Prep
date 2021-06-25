@@ -49,6 +49,9 @@ const theme = createMuiTheme({
             fontSize: "1.6em",
           },
         },
+        ".link": {
+          textDecoration: "none",
+        },
       },
     },
   },

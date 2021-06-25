@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography, Container, Box } from "@material-ui/core";
-
+import { Typography, Box } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import Navigation from "../../../Components/Navigation";
 import MUIButton from "../../../Components/Button";
 import heroLanding from "../../../Images/heroLanding.jpg";
@@ -18,7 +18,9 @@ const HeroSection = () => {
         </Typography>
         <Box className={classes.heroButton}>
           <MUIButton text="Sign Up"></MUIButton>
-          <MUIButton text="View Demo"></MUIButton>
+          <Link className="link" to="/demo">
+            <MUIButton text="View Demo"></MUIButton>
+          </Link>
         </Box>
         <div className={classes.heroContainer}>
           <img

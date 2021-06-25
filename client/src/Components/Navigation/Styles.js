@@ -5,10 +5,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexGrow: 1,
-    [theme.breakpoints.up("sm")]: {
-      paddingRight: "85px",
-      paddingLeft: "95px",
-    },
+  },
+
+  demoNav: {
+    backgroundColor: "black",
+    color: "white",
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {

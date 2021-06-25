@@ -51,7 +51,7 @@ function Navigation(props) {
           position="static"
           color="transparent"
           elevation={0}
-          className={classes.appBar}
+          className={`${classes.appBar} ${props.demo && classes.demoNav}`}
         >
           <Toolbar>
             <Typography variant="h5" noWrap className={classes.title}>

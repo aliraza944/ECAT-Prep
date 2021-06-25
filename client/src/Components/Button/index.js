@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "64px",
     fontSize: "1.2rem",
     letterSpacing: "0.07rem",
+
     "&:hover": {
       backgroundColor: "white",
       color: theme.palette.secondary.main,

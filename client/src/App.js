@@ -5,6 +5,7 @@ import theme from "./Hooks/MUITheme";
 import { ThemeProvider } from "@material-ui/core";
 import DemoPage from "./Pages/Demo";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SubjectDashBoard from "./Pages/SubjectDashboard";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -18,6 +19,9 @@ function App() {
             </Route>
             <Route exact path="/demo">
               <DemoPage />
+            </Route>
+            <Route exact path="/demo/:subject">
+              <SubjectDashBoard />
             </Route>
           </Switch>
         </Router>

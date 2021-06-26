@@ -4,6 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import { Link } from "react-router-dom";
 
 import useStyles from "./Styles";
 export default function CurrentProgressCard(props) {
@@ -33,7 +34,9 @@ export default function CurrentProgressCard(props) {
                 {`Progress:${props.progress}%`}
               </Typography>
             </div>
-            <Button className={classes.cardButton}>Continue</Button>
+            <Link className="link" to={props.link}>
+              <Button className={classes.cardButton}>Continue</Button>
+            </Link>
           </div>
         </div>
       </CardContent>

@@ -41,6 +41,7 @@ export default function CenteredGrid() {
                   title="physics"
                   progress="8"
                   icon={physicsIcon}
+                  link="/demo/physics"
                 ></CurrentProgressCard>
               </Grid>
               <Grid item sm={6} xs={12}>
@@ -49,6 +50,7 @@ export default function CenteredGrid() {
                   title="chemistry"
                   progress="7"
                   icon={chemistryIcon}
+                  link="/demo/chemistry"
                 ></CurrentProgressCard>
               </Grid>
             </Grid>
@@ -59,6 +61,7 @@ export default function CenteredGrid() {
                   title="math"
                   progress="5"
                   icon={mathIcon}
+                  link="/demo/math"
                 ></CurrentProgressCard>
               </Grid>
               <Grid item sm={6} xs={12}>
@@ -67,6 +70,7 @@ export default function CenteredGrid() {
                   title="biology"
                   progress="7"
                   icon={biologyIcon}
+                  link="/demo/biology"
                 ></CurrentProgressCard>
               </Grid>
             </Grid>

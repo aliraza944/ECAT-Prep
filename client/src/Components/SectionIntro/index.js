@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DemoIntro() {
+export default function SectionIntro(props) {
   const classes = useStyles();
 
   return (
@@ -40,17 +40,9 @@ export default function DemoIntro() {
             component="h2"
             className={classes.demoHeading}
           >
-            HEY THERE, ROONIL WAZLIB. WELCOME TO UCAT (UKCAT) NINJA!
+            {props.title}
           </Typography>
-          <Typography className="sectionText" varient="p" component="p">
-            UCAT (UKCAT) Ninja is an online UCAT (UKCAT) course and question
-            bank rolled into one. It was made with ♥ by 6med, a small startup
-            built and run exclusively by medical students. We really hope you
-            enjoy using the website and find it useful - we remember how
-            daunting the medical applications process was, and we're thrilled
-            that you've allowed us to be a part of your journey. Good luck! Here
-            is the link to our help center{" "}
-          </Typography>
+          <Typography className="sectionText">{props.intro}</Typography>
         </div>
       </Paper>
     </div>

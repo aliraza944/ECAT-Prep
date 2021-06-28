@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
   demoHeading: {
     color: " #3e3e3e",
     fontSize: "1.6em",
-    textTransform: "inherit",
+    textTransform: "uppercase",
     fontWeight: "700",
-
+    letterSpacing: "0.05em",
     paddingTop: "10px",
     lineHeight: "1.6em",
 

@@ -3,9 +3,9 @@ import Navigation from "../../Components/Navigation";
 import useStyles from "./Style";
 import Footer from "../../Components/Footer";
 import SectionIntro from "../../Components/SectionIntro";
-import DemoStats from "./DemoStats";
+import ProgressStats from "./ProgressStats";
 import DemoAlert from "../../Components/demoAlert";
-const DemoPage = () => {
+const ProgressPage = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -23,11 +23,11 @@ const DemoPage = () => {
             that you've allowed us to be a part of your journey. Good luck! Here
             is the link to our help center"
         />
-        <DemoStats></DemoStats>
+        <ProgressStats></ProgressStats>
       </div>
       <Footer />
     </div>
   );
 };
 
-export default DemoPage;
+export default ProgressPage;

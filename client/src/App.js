@@ -3,7 +3,7 @@ import Home from "./Pages/Home";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./Hooks/MUITheme";
 import { ThemeProvider } from "@material-ui/core";
-import DemoPage from "./Pages/Demo";
+import ProgressPage from "./Pages/ProgressPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SubjectDashBoard from "./Pages/SubjectDashboard";
 function App() {
@@ -18,7 +18,7 @@ function App() {
               <Home />
             </Route>
             <Route exact path="/demo">
-              <DemoPage />
+              <ProgressPage />
             </Route>
             <Route exact path="/demo/:subject">
               <SubjectDashBoard />

@@ -11,10 +11,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./Styles";
-
+import { Link } from "react-router-dom";
 function Navigation(props) {
   const navItems = ["Physics", "Maths", "Chemistry", "Biology"];
-  const homeItems = ["Register", "Login"];
+  const homeItems = ["signup", "login"];
   const classes = useStyles();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -31,9 +31,11 @@ function Navigation(props) {
       <List>
         {props.home
           ? homeItems.map((text) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
+              <Link className="link" to={`/${text}`}>
+                <ListItem button key={text}>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </Link>
             ))
           : navItems.map((text) => (
               <ListItem button key={text}>

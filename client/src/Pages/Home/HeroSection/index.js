@@ -18,7 +18,7 @@ const HeroSection = () => {
         </Typography>
         <Box className={classes.heroButton}>
           <MUIButton text="Sign Up"></MUIButton>
-          <Link className="link" to="/demo">
+          <Link className="link" to="/home">
             <MUIButton text="View Demo"></MUIButton>
           </Link>
         </Box>

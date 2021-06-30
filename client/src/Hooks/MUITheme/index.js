@@ -51,6 +51,7 @@ const theme = createMuiTheme({
         },
         ".link": {
           textDecoration: "none",
+          color: "white",
         },
       },
     },

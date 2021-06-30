@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   drawer: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -22,16 +22,25 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
     marginRight: theme.spacing(0),
     flexGrow: 1,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
   navItems: {
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    width: "80%",
+    [theme.breakpoints.up("md")]: {
       display: "flex",
-      justifyContent: "flex-end",
+      justifyContent: "space-between",
     },
+  },
+  subjectLink: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  registrationLinks: {
+    display: "flex",
+    justifyContent: "space-around",
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -45,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     marginRight: theme.spacing(4),
+    textTransform: "capitalize",
   },
   logo: {
     width: "10%",

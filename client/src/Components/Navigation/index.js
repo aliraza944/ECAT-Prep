@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -13,15 +13,54 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "./Styles";
 import { Link } from "react-router-dom";
 function Navigation(props) {
-  const navItems = ["Physics", "Maths", "Chemistry", "Biology"];
-  const homeItems = ["signup", "login"];
+  const navItems = ["physics", "math", "chemistry", "biology"];
+  const homeItems = ["Signup", "Login"];
   const classes = useStyles();
 
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const nav = (
+    <div className={classes.navItems}>
+      <div className={classes.subjectLink}>
+        <Link to="/home/physics" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            Physics
+          </Typography>
+        </Link>
+        <Link to="/home/chemistry" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            chemistry
+          </Typography>
+        </Link>
+        <Link to="/home/math" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            Math
+          </Typography>
+        </Link>
+        <Link to="/home/biology" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            Biology
+          </Typography>
+        </Link>
+      </div>
+      <div className={classes.registrationLinks}>
+        <Link to="/signup" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            Sign Up
+          </Typography>
+        </Link>{" "}
+        <Link to="/login" className="link">
+          <Typography variant="h6" noWrap className={classes.title}>
+            Login
+          </Typography>
+        </Link>
+      </div>
+    </div>
+  );
 
   const drawer = (
     <div>
@@ -31,14 +70,12 @@ function Navigation(props) {
       <List>
         {props.home
           ? homeItems.map((text) => (
-              <Link className="link" to={`/${text}`}>
-                <ListItem button key={text}>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </Link>
+              <ListItem component={Link} to={`/${text}`} button>
+                <ListItemText primary={text} />
+              </ListItem>
             ))
           : navItems.map((text) => (
-              <ListItem button key={text}>
+              <ListItem component={Link} to={`/home/${text}`} button key={text}>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -56,25 +93,28 @@ function Navigation(props) {
           className={`${classes.appBar} ${props.demo && classes.demoNav}`}
         >
           <Toolbar>
+            {" "}
             <Typography variant="h5" noWrap className={classes.title}>
-              Ecat Ninja
+              <Link className="link" to="/">
+                Ecat Ninja
+              </Link>
             </Typography>
             <div className={classes.navItems}>
               {props.home
                 ? homeItems.map((item) => {
                     return (
-                      <Typography variant="h5" noWrap className={classes.title}>
-                        {item}
-                      </Typography>
+                      <Link to={`/${item}`} className="link">
+                        <Typography
+                          variant="h5"
+                          noWrap
+                          className={classes.title}
+                        >
+                          {item}
+                        </Typography>
+                      </Link>
                     );
                   })
-                : navItems.map((item) => {
-                    return (
-                      <Typography variant="h6" noWrap className={classes.title}>
-                        {item}
-                      </Typography>
-                    );
-                  })}
+                : nav}
             </div>
             <IconButton
               color="inherit"
@@ -88,7 +128,7 @@ function Navigation(props) {
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          <Hidden smUp>
+          <Hidden mdUp>
             <Drawer
               variant="temporary"
               anchor="right"

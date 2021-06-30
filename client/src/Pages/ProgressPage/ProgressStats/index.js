@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import { Typography, Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import physicsIcon from "../../../Images/physicsIcon.png";
 import CurrentProgressCard from "../../../Components/currentProgressCards";
@@ -35,13 +34,19 @@ export default function ProgressStats() {
         <Grid item md={8} xs={12}>
           <Paper className={classes.paper}>
             <h2> Currently Working on</h2>
-            <Grid container alignItems="center" justify="center" spacing={2}>
+            <Grid
+              container
+              alignItems="center"
+              justify="center"
+              spacing={2}
+              style={{ marginBottom: "16px" }}
+            >
               <Grid item sm={6} xs={12}>
                 <CurrentProgressCard
                   title="physics"
                   progress="8"
                   icon={physicsIcon}
-                  link="/demo/physics"
+                  link="/home/physics"
                 ></CurrentProgressCard>
               </Grid>
               <Grid item sm={6} xs={12}>
@@ -50,7 +55,7 @@ export default function ProgressStats() {
                   title="chemistry"
                   progress="7"
                   icon={chemistryIcon}
-                  link="/demo/chemistry"
+                  link="/home/chemistry"
                 ></CurrentProgressCard>
               </Grid>
             </Grid>
@@ -61,7 +66,7 @@ export default function ProgressStats() {
                   title="math"
                   progress="5"
                   icon={mathIcon}
-                  link="/demo/math"
+                  link="/home/math"
                 ></CurrentProgressCard>
               </Grid>
               <Grid item sm={6} xs={12}>
@@ -70,7 +75,7 @@ export default function ProgressStats() {
                   title="biology"
                   progress="7"
                   icon={biologyIcon}
-                  link="/demo/biology"
+                  link="/home/biology"
                 ></CurrentProgressCard>
               </Grid>
             </Grid>

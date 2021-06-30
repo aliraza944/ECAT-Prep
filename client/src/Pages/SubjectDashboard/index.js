@@ -23,7 +23,7 @@ const SubjectDashBoard = () => {
   }
   return (
     <div>
-      <Navigation demo />
+      <Navigation demo dash />
       <DemoAlert />
       <SubjectDashBoardHeader subject={subject} />
       <div className={classes.subjectDashBoardContent}>

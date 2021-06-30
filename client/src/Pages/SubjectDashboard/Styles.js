@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f12d5e",
     color: "white",
     cursor: "pointer",
-    width: "170px",
+    width: "180px",
     textTransform: "uppercase",
     fontSize: "1em",
     border: "none",
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "white",
       color: theme.palette.secondary.main,
+      border: "2px solid #f12d5e",
     },
   },
 }));

@@ -96,7 +96,7 @@ export default function SignUp() {
 
             <div>
               <Button type="submit" variant="contained" color="secondary">
-                Login
+                Sign Up
               </Button>
             </div>
           </form>

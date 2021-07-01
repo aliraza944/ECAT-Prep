@@ -26,22 +26,7 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
-  navItems: {
-    display: "none",
-    width: "80%",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-      justifyContent: "space-between",
-    },
-  },
-  subjectLink: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  registrationLinks: {
-    display: "flex",
-    justifyContent: "space-around",
-  },
+
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {

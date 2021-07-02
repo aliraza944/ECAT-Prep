@@ -1,12 +1,30 @@
 const express = require("express");
-
+// const postRoute = require("./routes/post");
+require("dotenv/config");
 const app = express();
-
-app.use(express.json());
-
-app.get("/", async (req, res) => {
-  res.send("hello world");
+const cors = require("cors");
+app.use(express.json({ extended: false }));
+app.use(cors());
+// app.use(upload.array());
+app.get("/", (req, res) => {
+  res.send("hello");
 });
-app.listen(5000, () => {
-  console.log("running on port 5000");
+
+// app.use("/post", postRoute);
+//error middleware
+app.use((req, res, next) => {
+  const error = new Error("Not Found");
+  error.status = 404;
+  next(error);
 });
+
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+const port = process.env.PORT_NUMBER || 5000;
+app.listen(port, () => console.log(`running on port ${port}`));

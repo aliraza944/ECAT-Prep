@@ -1,16 +1,36 @@
 const express = require("express");
-// const postRoute = require("./routes/post");
+
 require("dotenv/config");
 const app = express();
 const cors = require("cors");
+const mongoose = require("mongoose");
+const signupRouter = require("./routes/signup");
+const loginRouter = require("./routes/login");
+const cookieParser = require("cookie-parser");
 app.use(express.json({ extended: false }));
-app.use(cors());
-// app.use(upload.array());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS", "HEAD"],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
+mongoose
+  .connect(process.env.DB_CONNECTION, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("connection secure");
+  })
+  .catch((error) => console.log(error));
+
 app.get("/", (req, res) => {
   res.send("hello");
 });
-
-// app.use("/post", postRoute);
+app.use("/signup", signupRouter);
+app.use("/login", loginRouter);
 //error middleware
 app.use((req, res, next) => {
   const error = new Error("Not Found");

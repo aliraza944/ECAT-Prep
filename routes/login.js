@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const Users = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Users = require("../models/User");
 // router to add admin user
 router.get("/admin", async (req, res) => {
   const password = "123456abc";
@@ -24,7 +24,7 @@ router.get("/admin", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.values;
 
   const user = await Users.findOne({ email: email }).select("+password");
   if (!user) return res.send("wrong email");
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
 
   if (!validate) return res.status(400).send("wrong password");
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.cookie("token", token).send({ email: user.email, role: user.role });
+  res.cookie("token", token).send({ name: user.name });
 
   res.end();
 });

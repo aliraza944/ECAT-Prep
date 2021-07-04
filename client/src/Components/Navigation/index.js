@@ -10,11 +10,11 @@ import useStyles from "./Styles";
 import { Link } from "react-router-dom";
 import { NavElements } from "./NavElements";
 import DrawerElements from "./DrawerElements";
+import { useLogin } from "../../Store";
 function Navigation(props) {
   const classes = useStyles();
-
+  const user = useLogin();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -35,7 +35,7 @@ function Navigation(props) {
                 Ecat Ninja
               </Link>
             </Typography>
-            <NavElements home={props.home} isLoggedIn={isLoggedIn} />
+            <NavElements home={props.home} isLoggedIn={user} />
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -61,7 +61,7 @@ function Navigation(props) {
                 keepMounted: true, // Better open performance on mobile.
               }}
             >
-              <DrawerElements home={props.home} isLoggedIn={isLoggedIn} />
+              <DrawerElements home={props.home} isLoggedIn={user} />
             </Drawer>
           </Hidden>
         </nav>

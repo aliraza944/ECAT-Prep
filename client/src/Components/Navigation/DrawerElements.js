@@ -3,7 +3,7 @@ import { List, ListItem, ListItemText, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-
+import { useLogout } from "../../Hooks/useLogout";
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   title: {
@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DrawerElements = (props) => {
+  const handleLogout = useLogout();
   const classes = useStyles();
   return (
     <div>
@@ -43,14 +44,14 @@ const DrawerElements = (props) => {
           <ListItem component={Link} to="/home/biology">
             <ListItemText primary="Biology" />
           </ListItem>
-          {props.isLoggedIn ? (
+          {props.isLoggedIn.name ? (
             <>
               {" "}
               <ListItem component={Link} to="/home">
-                <ListItemText primary="Hey stranger" />
+                <ListItemText primary={props.isLoggedIn.name} />
               </ListItem>
               <ListItem component={Button}>
-                <ListItemText primary="Log Out" />
+                <ListItemText primary="Log Out" onClick={handleLogout} />
               </ListItem>
             </>
           ) : (

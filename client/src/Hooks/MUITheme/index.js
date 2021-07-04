@@ -53,6 +53,12 @@ const theme = createMuiTheme({
           textDecoration: "none",
           color: "white",
         },
+        spinner: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          overflow: "hidden",
+        },
       },
     },
   },

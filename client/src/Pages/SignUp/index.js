@@ -92,11 +92,11 @@ export default function SignUp() {
             noValidate
             autoComplete="off"
           >
-            <Typography variant="h2" component="h2">
+            <Typography variant="h2" component="h2" mb={2}>
               {" "}
               Please Sign Up
             </Typography>
-            <div>
+            <div className="spinner">
               {spinner && <CircularProgress size="2rem" color="primary" />}
             </div>
             <FormControl
@@ -186,7 +186,7 @@ export default function SignUp() {
             formik.errors.passwordConfirmation ? (
               <div>the paswords must match</div>
             ) : null}
-            <div>
+            <div className={classes.submitBtn}>
               <Button type="submit" variant="contained" color="secondary">
                 Sign Up
               </Button>

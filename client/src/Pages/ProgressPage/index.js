@@ -5,7 +5,9 @@ import Footer from "../../Components/Footer";
 import SectionIntro from "../../Components/SectionIntro";
 import ProgressStats from "./ProgressStats";
 import DemoAlert from "../../Components/demoAlert";
+import { useLogin } from "../../Store";
 const ProgressPage = () => {
+  const user = useLogin();
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -14,7 +16,9 @@ const ProgressPage = () => {
       <DemoAlert />
       <div className={classes.demoContent}>
         <SectionIntro
-          title=" HEY THERE, ROONIL WAZLIB. WELCOME TO UCAT (UKCAT) NINJA!"
+          title={` HEY THERE, ${
+            user.name ? user.name : "Stranger"
+          }. WELCOME TO UCAT (UKCAT) NINJA!`}
           intro="UCAT (UKCAT) Ninja is an online UCAT (UKCAT) course and question
             bank rolled into one. It was made with ♥ by 6med, a small startup
             built and run exclusively by medical students. We really hope you

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { useLogout } from "../../Hooks/useLogout";
 const useStyles = makeStyles((theme) => ({
   navItems: {
     display: "none",
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const NavElements = (props) => {
   const classes = useStyles();
+  const handleLogout = useLogout();
   return (
     <>
       {props.home ? (
@@ -68,14 +70,18 @@ export const NavElements = (props) => {
               </Typography>
             </Link>
           </div>
-          {props.isLoggedIn ? (
+          {props.isLoggedIn.name ? (
             <div className={classes.Links}>
               <Link to="/home" className="link">
                 <Typography variant="h6" noWrap className={classes.title}>
-                  Hey stranger
+                  {props.isLoggedIn.name}
                 </Typography>
               </Link>{" "}
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleLogout}
+              >
                 Logout
               </Button>
             </div>

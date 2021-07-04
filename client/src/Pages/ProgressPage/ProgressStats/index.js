@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import physicsIcon from "../../../Images/physicsIcon.png";
+import physicsIcon from "../../../Images/physicsIcon.svg";
 import CurrentProgressCard from "../../../Components/currentProgressCards";
 import chemistryIcon from "../../../Images/chemistryIcon.svg";
 import biologyIcon from "../../../Images/biologyIcon.svg";

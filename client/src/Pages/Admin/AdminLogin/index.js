@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Naviagtion from "../../Components/Navigation";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import {
@@ -13,8 +12,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useLogin, useUpdateLogin } from "../../Store";
-import { useHistory } from "react-router";
+import { useLogin, useUpdateAdmin } from "../../../Store";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -36,12 +34,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LogIn() {
+export default function AdminLogin() {
   const [spinner, setSpinner] = useState(false);
-  const updateUser = useUpdateLogin();
+  const updateAdmin = useUpdateAdmin();
   const user = useLogin();
   const classes = useStyles();
-  const history = useHistory();
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: Yup.object({
@@ -54,7 +51,7 @@ export default function LogIn() {
       setSpinner(true);
       try {
         const res = await axios.post(
-          "http://localhost:5000/login",
+          "http://localhost:5000/login/admin",
           {
             values,
           },
@@ -68,9 +65,8 @@ export default function LogIn() {
 
         if (res) {
           setSpinner(false);
-          updateUser(res.data);
-          console.log(user);
-          history.push("/home");
+          updateAdmin(res.data);
+          console.log(res);
         }
       } catch (error) {
         if (error) throw error;
@@ -80,14 +76,12 @@ export default function LogIn() {
 
   return (
     <>
-      <Naviagtion demo />
       <>
         <div className={classes.formContainer}>
           <form
             className={classes.root}
             onSubmit={formik.handleSubmit}
             noValidate
-            autoComplete="off"
           >
             <Typography variant="h2" component="h2">
               {" "}

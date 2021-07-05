@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,12 +18,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     color: "white",
     marginLeft: theme.spacing(3),
+    textTransform: "capitalize",
   },
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
+  const { subject } = useParams();
   return (
     <div className={classes.root}>
       <AppBar style={{ backgroundColor: "black" }} position="static">
@@ -33,6 +34,10 @@ export default function ButtonAppBar() {
               ECAT Prep
             </Typography>
           </Link>
+
+          <Typography variant="h6" className={classes.title}>
+            {subject}
+          </Typography>
           <IconButton
             edge="end"
             className={classes.menuButton}

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   paracticeContent: {
     width: "100%",
-    // height: "85.3vh",
+    // height: "95v h",
   },
   qeustionTitle: {
     fontSize: "1.5em",

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.pluralize(null);
 const biologySchema = new mongoose.Schema({
   questionstatement: {
     type: String,
@@ -43,4 +44,4 @@ const biologySchema = new mongoose.Schema({
     max: 8,
   },
 });
-module.exports = mongoose.model("Biology", biologySchema);
+module.exports = mongoose.model("biology", biologySchema);

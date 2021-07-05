@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ededed",
     border: "none",
     borderRadius: "16px",
+    boxShadow: "none",
   },
 
   title: {

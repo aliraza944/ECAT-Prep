@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.pluralize(null);
 const mathSchema = new mongoose.Schema({
   questionstatement: {
     type: String,
@@ -43,4 +44,4 @@ const mathSchema = new mongoose.Schema({
     max: 8,
   },
 });
-module.exports = mongoose.model("Math", mathSchema);
+module.exports = mongoose.model("math", mathSchema);

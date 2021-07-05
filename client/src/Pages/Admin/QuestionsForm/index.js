@@ -21,6 +21,11 @@ import * as Yup from "yup";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
+  "@global": {
+    "*": {
+      overflowX: "unset",
+    },
+  },
   root: {
     width: "100%",
     maxWidth: "600px",
@@ -80,28 +85,28 @@ const QuestionsForm = () => {
       console.log(values);
       //   setSpinner(true);
 
-      //   try {
-      //     const res = await axios.post(
-      //       "http://localhost:5000/login/admin",
-      //       {
-      //         values,
-      //       },
-      //       {
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //         },
-      //         withCredentials: true,
-      //       }
-      //     );
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/postquestions",
+          {
+            values,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
 
-      //     if (res) {
-      //       setSpinner(false);
-      //       updateAdmin(res.data);
-      //       console.log(res);
-      //     }
-      //   } catch (error) {
-      //     if (error) throw error;
-      //   }
+        if (res) {
+          // setSpinner(false);
+          // updateAdmin(res.data);
+          console.log(res);
+        }
+      } catch (error) {
+        if (error) throw error;
+      }
     },
   });
   const classes = useStyles();
@@ -161,27 +166,28 @@ const QuestionsForm = () => {
         </FormControl>
         <div>
           <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel style={{ overflowX: "unset" }} htmlFor="chapters">
-              Chapters
-            </InputLabel>
+            <InputLabel htmlFor="chapters">Chapters</InputLabel>
             <Select
               native
-              label="chapters"
-              style={{ overflowX: "unset" }}
+              label="Chapters"
               {...formik.getFieldProps("chapter")}
               inputProps={{
                 name: "chapter",
                 id: "outlined-age-native-simple",
               }}
             >
-              <option
-                style={{ overflowX: "unset" }}
-                aria-label="None"
-                value="ch12"
-              />
-              <option value={10}>Ten</option>
-              <option value={20}>Twenty</option>
-              <option value={30}>Thirty</option>
+              <option aria-label="None" value="" />
+              <option value="ch12">Chapters 1 & 2</option>
+              <option value="ch34">Chapters 3 & 4</option>
+              <option value="ch56">Chapters 5 & 6</option>
+              <option value="ch78">Chapters 7 & 8</option>
+              <option value="ch910">Chapters 9 & 10</option>
+              <option value="ch1112">Chapters 11 & 12</option>
+              <option value="ch1314">Chapters 13 & 14</option>
+              <option value="ch1516">Chapters 15 & 16</option>
+              <option value="ch1718">Chapters 17 & 18</option>
+              <option value="ch1920">Chapters 19 & 20</option>
+              <option value="ch2122">Chapters 21 & 22</option>
             </Select>
             {formik.touched.chapter && formik.errors.chapter ? (
               <div>choose a chapter</div>
@@ -317,7 +323,6 @@ const QuestionsForm = () => {
           >
             <TextField
               id="outlined-basic"
-              style={{ overflowX: "auto" }}
               label="Answer"
               variant="outlined"
               type="search"

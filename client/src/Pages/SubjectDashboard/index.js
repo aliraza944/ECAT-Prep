@@ -11,9 +11,34 @@ import ParacticeDojoCards from "../../Components/ParacticeDojoCards";
 import TrainingTemplateCard from "../../Components/TrainingTemplateCard";
 import Footer from "../../Components/Footer";
 import Button from "@material-ui/core/Button";
-
+import { Link } from "react-router-dom";
 const mySubjects = ["physics", "chemistry", "math", "biology"];
-
+const chapterTitle = [
+  "Chapter 1 & 2",
+  "Chapter 3 & 4",
+  "Chapter 5 & 6",
+  "Chapter 7 & 8",
+  "Chapter 9 & 10",
+  "Chapter 11 & 12",
+  "Chapter 13 & 14",
+  "Chapter 15 & 16",
+  "Chapter 17 & 18",
+  "Chapter 19 & 20",
+  "Chapter 21 & 22",
+];
+const chapters = [
+  "ch12",
+  "ch34",
+  "ch56",
+  "ch78",
+  "ch910",
+  "ch1112",
+  "ch1314",
+  "ch1516",
+  "ch1718",
+  "ch1920",
+  "ch2122",
+];
 const SubjectDashBoard = () => {
   const classes = useStyles();
   const { subject } = useParams();
@@ -41,7 +66,15 @@ const SubjectDashBoard = () => {
               <h2 className={classes.title} style={{ textAlign: "center" }}>
                 Training Template
               </h2>
-              <TrainingTemplateCard />
+              {chapterTitle.map((title, index) => {
+                return (
+                  <TrainingTemplateCard
+                    subject={subject}
+                    cardTitle={title}
+                    chapter={chapters[index]}
+                  />
+                );
+              })}
             </Paper>{" "}
           </Grid>
           <Grid item sm={6} xs={12}>
@@ -57,7 +90,9 @@ const SubjectDashBoard = () => {
                   <ParacticeDojoCards avg />
                 </Grid>
               </Grid>
-              <Button className={classes.dojoBtn}>Continue Paractice</Button>
+              <Link to={`/paractice/${subject}`} className="link">
+                <Button className={classes.dojoBtn}>Continue Paractice</Button>
+              </Link>
             </Paper>
           </Grid>
         </Grid>

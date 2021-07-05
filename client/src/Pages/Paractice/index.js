@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ParacticeNav from "./ParacticeNav";
 import { Paper, Button } from "@material-ui/core";
 import Radio from "@material-ui/core/Radio";
@@ -6,8 +6,18 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import useStyles from "./Styles";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 const Paractice = () => {
   const [value, setValue] = React.useState("");
+  const location = useLocation();
+  const { chapter, part } = queryString.parse(location.search);
+  console.log({ chapter, part });
+  // useEffect(() => {
+  //   const currentPath = location.pathname;
+  //   const searchParams = new URLSearchParams(location.search);
+  //   // console.log(location);
+  // }, [location]);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -48,10 +58,10 @@ const Paractice = () => {
             </FormControl>
           </div>
         </Paper>
-      </div>
-      <div className={classes.questionBtn}>
-        <Button style={{ background: "#e83030" }}>Previous</Button>
-        <Button style={{ background: "#81dd1c" }}>Next</Button>
+        <div className={classes.questionBtn}>
+          <Button style={{ background: "#e83030" }}>Previous</Button>
+          <Button style={{ background: "#81dd1c" }}>Next</Button>
+        </div>
       </div>
     </div>
   );

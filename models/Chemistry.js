@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.pluralize(null);
 const chemistrySchema = new mongoose.Schema({
   questionstatement: {
     type: String,
@@ -43,4 +44,4 @@ const chemistrySchema = new mongoose.Schema({
     max: 8,
   },
 });
-module.exports = mongoose.model("Chemistry", chemistrySchema);
+module.exports = mongoose.model("chemistry", chemistrySchema);

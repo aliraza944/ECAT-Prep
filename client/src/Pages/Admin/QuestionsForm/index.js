@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import {
-  OutlinedInput,
   FormControl,
   InputLabel,
   Button,
@@ -13,7 +12,6 @@ import {
   FormControlLabel,
   Radio,
   Select,
-  Input,
   TextField,
 } from "@material-ui/core";
 import { useFormik } from "formik";
@@ -58,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const QuestionsForm = () => {
   const [spinner, setSpinner] = useState(false);
+  const [response, setResponse] = useState();
   const formik = useFormik({
     initialValues: {
       subject: "",
@@ -82,8 +81,7 @@ const QuestionsForm = () => {
       answer: Yup.string().required(" missing"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
-      //   setSpinner(true);
+      setSpinner(true);
 
       try {
         const res = await axios.post(
@@ -100,8 +98,8 @@ const QuestionsForm = () => {
         );
 
         if (res) {
-          // setSpinner(false);
-          // updateAdmin(res.data);
+          setSpinner(false);
+          setResponse(res.data);
           console.log(res);
         }
       } catch (error) {
@@ -112,6 +110,10 @@ const QuestionsForm = () => {
   const classes = useStyles();
   return (
     <div className={classes.formContainer}>
+      {response ? <div>{response}</div> : null}
+      <div className="spinner">
+        {spinner && <CircularProgress size="2rem" color="primary" />}
+      </div>
       <form
         className={classes.root}
         onSubmit={formik.handleSubmit}

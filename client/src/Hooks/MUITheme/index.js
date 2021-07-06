@@ -53,11 +53,27 @@ const theme = createMuiTheme({
           textDecoration: "none",
           color: "white",
         },
-        spinner: {
+        ".spinner": {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           overflow: "hidden",
+        },
+        ".roundBtn": {
+          margin: "20px 0 20px 10px",
+          backgroundColor: "#f12d5e",
+          color: "white",
+          cursor: "pointer",
+          width: "180px",
+          textTransform: "uppercase",
+          fontSize: "1em",
+          border: "none",
+          borderRadius: "10px",
+          "&:hover": {
+            backgroundColor: "white",
+            color: "#f12d5e",
+            border: "1px solid #f12d5e",
+          },
         },
       },
     },

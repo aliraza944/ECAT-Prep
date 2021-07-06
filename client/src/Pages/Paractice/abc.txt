@@ -10,46 +10,30 @@ import { useLocation, useParams } from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Modal from "@material-ui/core/Modal";
-import { useHistory } from "react-router-dom";
+
 const Paractice = () => {
-  const history = useHistory();
-  const [questions, setQuestions] = useState();
-  const [modalOpen, setModalOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [questions, setQuestions] = useState([]);
   const [questionsCounter, setQuestionsCounter] = useState(0);
   const location = useLocation();
   const [spinner, setSpinner] = useState(false);
-  const [value, setValue] = useState("");
-  const [showAnswer, setShowAnswer] = useState(false);
+
   const { chapter, part } = queryString.parse(location.search);
   const { subject } = useParams();
-
-  const handleShowAnswer = () => {
-    setShowAnswer(true);
-    setModalOpen(false);
-  };
-  const handleExploreSections = () => history.goBack();
-  const handleClose = () => {
-    setModalOpen(false);
-  };
-
   const nextQuestion = (e) => {
     e.preventDefault();
-    if (questionsCounter == questions.length - 1) {
-      setModalOpen(true);
+    if (questionsCounter + 1 > questions.length) {
       setQuestionsCounter(0);
-    } else {
-      setQuestionsCounter(questionsCounter + 1);
     }
+    setQuestionsCounter(questionsCounter + 1);
   };
 
   const previousQuestion = (e) => {
     e.preventDefault();
-    if (questionsCounter === 0) {
+    if (questionsCounter + 1 > questions.length) {
       setQuestionsCounter(0);
-    } else {
-      setQuestionsCounter(questionsCounter - 1);
     }
+    setQuestionsCounter(questionsCounter + 1);
   };
   const getQuestions = async () => {
     setSpinner(true);
@@ -82,28 +66,16 @@ const Paractice = () => {
   }, []);
 
   const handleChange = (event) => {
-    event.preventDefault();
-    // setValue(event.target.value);
+    setValue(event.target.value);
   };
   const classes = useStyles();
   return (
     <div>
       <ParacticeNav />
-      <div className="spinner">
-        {spinner && (
-          <CircularProgress className="spinner" size="2rem" color="primary" />
-        )}
-      </div>
-      {questions ? (
+      {spinner && <CircularProgress size="2rem" color="primary" />}
+      {questions && (
         <div className={classes.paracticeContent}>
           <Paper className={classes.paper} elevation={0}>
-            {showAnswer && (
-              <div>
-                <h1 className="sectionText">
-                  Answer: {questions[questionsCounter].answer}
-                </h1>
-              </div>
-            )}
             <div className={classes.paperContent}>
               <p className={classes.qustionsAmount}>
                 Question {questionsCounter + 1} of {questions.length}
@@ -149,30 +121,7 @@ const Paractice = () => {
             </Button>
           </div>
         </div>
-      ) : null}
-      <Modal
-        open={modalOpen}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        className={classes.modal}
-      >
-        <Paper className={classes.modalPaper}>
-          <h1>Congradulations</h1>
-          <p className="sectionText">
-            You have completed this section of questions for explore new
-            sections please go back
-          </p>
-          <div className={classes.modalBtn}>
-            <Button className="roundBtn" onClick={handleShowAnswer}>
-              View Answers
-            </Button>
-            <Button className="roundBtn" onClick={handleExploreSections}>
-              Explore sections
-            </Button>
-          </div>
-        </Paper>
-      </Modal>
+      )}
     </div>
   );
 };

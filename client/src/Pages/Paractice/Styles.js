@@ -44,5 +44,22 @@ const useStyles = makeStyles((theme) => ({
       width: "100px",
     },
   },
+  modal: {
+    top: "50%",
+    left: "50%",
+    display: "flex",
+    alignItem: "center",
+    justifyContent: "center",
+  },
+  modalPaper: {
+    width: "50%",
+    margin: "100px 0 100px 0",
+    textAlign: "center",
+  },
+  modalBtn: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 }));
 export default useStyles;

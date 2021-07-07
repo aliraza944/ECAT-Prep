@@ -17,6 +17,7 @@ const Paractice = () => {
   const [questions, setQuestions] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const [questionsCounter, setQuestionsCounter] = useState(0);
+  const [answer, setAnswer] = useState([]);
   const location = useLocation();
   const [spinner, setSpinner] = useState(false);
   const [value, setValue] = useState("");
@@ -28,7 +29,10 @@ const Paractice = () => {
     setShowAnswer(true);
     setModalOpen(false);
   };
-  const handleExploreSections = () => history.goBack();
+  const handleExploreSections = () => {
+    history.goBack();
+    submitAnswers();
+  };
   const handleClose = () => {
     setModalOpen(false);
   };
@@ -37,7 +41,8 @@ const Paractice = () => {
     e.preventDefault();
     if (questionsCounter == questions.length - 1) {
       setModalOpen(true);
-      setQuestionsCounter(0);
+      // setQuestionsCounter(0);
+      console.log(answer);
     } else {
       setQuestionsCounter(questionsCounter + 1);
     }
@@ -81,9 +86,38 @@ const Paractice = () => {
     getQuestions();
   }, []);
 
-  const handleChange = (event) => {
-    event.preventDefault();
-    // setValue(event.target.value);
+  const submitAnswers = async () => {
+    if (modalOpen) {
+      try {
+        const res = await axios.post(
+          `http://localhost:5000/postquestions/answers?subject=${subject}&chapter=${chapter}&part=${part}`,
+          {
+            answer,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+
+        if (res) {
+          console.log(res);
+        }
+      } catch (error) {
+        if (error) throw error;
+      }
+    }
+    return;
+  };
+  const handleChange = (e) => {
+    e.preventDefault();
+    setValue(e.target.value);
+    const newVlaue = e.target.value;
+    const newArray = [...answer];
+    newArray.splice(questionsCounter, 1, newVlaue);
+    setAnswer(newArray);
   };
   const classes = useStyles();
   return (
@@ -159,7 +193,7 @@ const Paractice = () => {
       >
         <Paper className={classes.modalPaper}>
           <h1>Congradulations</h1>
-          <p className="sectionText">
+          <p className={classes.modalText}>
             You have completed this section of questions for explore new
             sections please go back
           </p>

@@ -45,21 +45,45 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   modal: {
-    top: "50%",
-    left: "50%",
+    top: "80%",
+    left: "80%",
     display: "flex",
     alignItem: "center",
     justifyContent: "center",
+    [theme.breakpoints.up("md")]: {
+      top: "50%",
+      left: "50%",
+    },
   },
   modalPaper: {
-    width: "50%",
-    margin: "100px 0 100px 0",
+    width: "80%",
+    margin: "80px 0 80px 0",
     textAlign: "center",
+    display: "flex",
+    alignItem: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    padding: "20px 20px 20px 20px",
+    [theme.breakpoints.up("md")]: {
+      width: "50%",
+      margin: "200px 0 200px 0",
+    },
+  },
+  modalText: {
+    textAlign: "center",
+    fontSize: "1rem",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.5rem",
+    },
   },
   modalBtn: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
   },
 }));
 export default useStyles;

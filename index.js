@@ -8,6 +8,7 @@ const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const cookieParser = require("cookie-parser");
 const questionRouter = require("./routes/postQuestions");
+const progressRouter = require("./routes/getProgress");
 app.use(express.json({ extended: false }));
 app.use(
   cors({
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/postquestions", questionRouter);
+app.use("/progress", progressRouter);
 //error middleware
 app.use((req, res, next) => {
   const error = new Error("Not Found");

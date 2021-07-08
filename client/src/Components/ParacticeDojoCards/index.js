@@ -15,7 +15,7 @@ export default function ParacticeDojoCards(props) {
               Avg. Paractice
             </Typography>
             <p className={classes.content}>
-              <span className={classes.bold}>0%</span>
+              <span className={classes.bold}>{props.average}%</span>
             </p>
           </div>
         ) : (
@@ -24,7 +24,8 @@ export default function ParacticeDojoCards(props) {
               Questions Completed
             </Typography>
             <p className={classes.content}>
-              <span className={classes.bold}>0</span>/581
+              <span className={classes.bold}>{props.completed}</span>/
+              {props.total}
             </p>
           </div>
         )}

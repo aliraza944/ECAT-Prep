@@ -12,6 +12,7 @@ import TrainingTemplateCard from "../../Components/TrainingTemplateCard";
 import Footer from "../../Components/Footer";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { useFetch } from "../../Hooks/useFetch";
 const mySubjects = ["physics", "chemistry", "math", "biology"];
 const chapterTitle = [
   "Chapter 1 & 2",
@@ -43,6 +44,9 @@ const SubjectDashBoard = () => {
   const classes = useStyles();
   const { subject } = useParams();
   const history = useHistory();
+  const { loading, response } = useFetch(`http://localhost:5000/progress`);
+  response && console.log(response[subject]);
+
   if (!mySubjects.includes(subject)) {
     history.push("/");
   }
@@ -84,10 +88,20 @@ const SubjectDashBoard = () => {
               <Grid container item spacing={2} justify="center">
                 {" "}
                 <Grid item xs={12} lg={6}>
-                  <ParacticeDojoCards />
+                  <ParacticeDojoCards
+                    completed={
+                      response &&
+                      (response[subject].answered / 100) *
+                        response[subject].total
+                    }
+                    total={response && response[subject].total}
+                  />
                 </Grid>
                 <Grid item xs={12} lg={6}>
-                  <ParacticeDojoCards avg />
+                  <ParacticeDojoCards
+                    avg
+                    average={response && response[subject].correct}
+                  />
                 </Grid>
               </Grid>
               <Link to={`/paractice/${subject}`} className="link">

@@ -39,10 +39,8 @@ const Paractice = () => {
 
   const nextQuestion = (e) => {
     e.preventDefault();
-    if (questionsCounter == questions.length - 1) {
+    if (questionsCounter === questions.length - 1) {
       setModalOpen(true);
-      // setQuestionsCounter(0);
-      console.log(answer);
     } else {
       setQuestionsCounter(questionsCounter + 1);
     }

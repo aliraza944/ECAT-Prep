@@ -8,6 +8,7 @@ import chemistryIcon from "../../../Images/chemistryIcon.svg";
 import biologyIcon from "../../../Images/biologyIcon.svg";
 import mathIcon from "../../../Images/mathIcon.svg";
 import MyStats from "../MyStats";
+import { useFetch } from "../../../Hooks/useFetch";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProgressStats() {
   const classes = useStyles();
+  const { loading, response } = useFetch(`http://localhost:5000/progress`);
 
   return (
     <div className={classes.root}>
@@ -44,7 +46,7 @@ export default function ProgressStats() {
               <Grid item sm={6} xs={12}>
                 <CurrentProgressCard
                   title="physics"
-                  progress="8"
+                  progress={response && response.physics.correct}
                   icon={physicsIcon}
                   link="/home/physics"
                 ></CurrentProgressCard>
@@ -53,7 +55,7 @@ export default function ProgressStats() {
                 {" "}
                 <CurrentProgressCard
                   title="chemistry"
-                  progress="7"
+                  progress={response && response.chemistry.correct}
                   icon={chemistryIcon}
                   link="/home/chemistry"
                 ></CurrentProgressCard>
@@ -64,7 +66,7 @@ export default function ProgressStats() {
               <Grid item sm={6} xs={12}>
                 <CurrentProgressCard
                   title="math"
-                  progress="5"
+                  progress={response && response.math.correct}
                   icon={mathIcon}
                   link="/home/math"
                 ></CurrentProgressCard>
@@ -73,7 +75,7 @@ export default function ProgressStats() {
                 {" "}
                 <CurrentProgressCard
                   title="biology"
-                  progress="7"
+                  progress={response && response.biology.correct}
                   icon={biologyIcon}
                   link="/home/biology"
                 ></CurrentProgressCard>
@@ -84,10 +86,22 @@ export default function ProgressStats() {
         <Grid item md={4} xs={12}>
           <Paper className={classes.paper}>
             <h2>My Stats</h2>
-            <MyStats subject="Phy" value={50} />
-            <MyStats subject="Che" value={25} />
-            <MyStats subject="Math" value={10} />
-            <MyStats subject="Bio" value={40} />
+            <MyStats
+              subject="Phy"
+              value={response && response.physics.answered}
+            />
+            <MyStats
+              subject="Che"
+              value={response && response.chemistry.answered}
+            />
+            <MyStats
+              subject="Math"
+              value={response && response.math.answered}
+            />
+            <MyStats
+              subject="Bio"
+              value={response && response.biology.answered}
+            />
           </Paper>
         </Grid>
       </Grid>

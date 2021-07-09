@@ -12,18 +12,20 @@ import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Modal from "@material-ui/core/Modal";
 import { useHistory } from "react-router-dom";
+import { useFetch } from "../../Hooks/useFetch";
 const Paractice = () => {
   const history = useHistory();
-  const [questions, setQuestions] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const [questionsCounter, setQuestionsCounter] = useState(0);
   const [answer, setAnswer] = useState([]);
   const location = useLocation();
-  const [spinner, setSpinner] = useState(false);
   const [value, setValue] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
   const { chapter, part } = queryString.parse(location.search);
   const { subject } = useParams();
+  const { loading, response } = useFetch(
+    `http://localhost:5000/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`
+  );
 
   const handleShowAnswer = () => {
     setShowAnswer(true);
@@ -39,7 +41,7 @@ const Paractice = () => {
 
   const nextQuestion = (e) => {
     e.preventDefault();
-    if (questionsCounter === questions.length - 1) {
+    if (questionsCounter === response.length - 1) {
       setModalOpen(true);
     } else {
       setQuestionsCounter(questionsCounter + 1);
@@ -54,35 +56,6 @@ const Paractice = () => {
       setQuestionsCounter(questionsCounter - 1);
     }
   };
-  const getQuestions = async () => {
-    setSpinner(true);
-
-    try {
-      const res = await axios.get(
-        `http://localhost:5000/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`,
-
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      // console.log(res);
-      setQuestions(res.data);
-      console.log(questions);
-      if (res) {
-        setSpinner(false);
-
-        // console.log(res);
-      }
-    } catch (error) {
-      if (error) throw error;
-    }
-  };
-  useEffect(() => {
-    getQuestions();
-  }, []);
 
   const submitAnswers = async () => {
     if (modalOpen) {
@@ -122,26 +95,26 @@ const Paractice = () => {
     <div>
       <ParacticeNav />
       <div className="spinner">
-        {spinner && (
+        {loading && (
           <CircularProgress className="spinner" size="2rem" color="primary" />
         )}
       </div>
-      {questions ? (
+      {response ? (
         <div className={classes.paracticeContent}>
           <Paper className={classes.paper} elevation={0}>
             {showAnswer && (
               <div>
                 <h1 className="sectionText">
-                  Answer: {questions[questionsCounter].answer}
+                  Answer: {response[questionsCounter].answer}
                 </h1>
               </div>
             )}
             <div className={classes.paperContent}>
               <p className={classes.qustionsAmount}>
-                Question {questionsCounter + 1} of {questions.length}
+                Question {questionsCounter + 1} of {response.length}
               </p>
               <h2 className={classes.qeustionTitle}>
-                {questions[questionsCounter].questionstatement}
+                {response[questionsCounter].questionstatement}?
               </h2>
               <FormControl component="fieldset">
                 <RadioGroup
@@ -149,21 +122,27 @@ const Paractice = () => {
                   name="paraticeQuestion"
                   value={value}
                   onChange={handleChange}
+                  style={{ textTransform: "capitalize" }}
                 >
                   <FormControlLabel
-                    value={questions[questionsCounter].option1}
+                    value={response[questionsCounter].option1}
                     control={<Radio />}
-                    label={questions[questionsCounter].option1}
+                    label={response[questionsCounter].option1}
                   />
                   <FormControlLabel
-                    value={questions[questionsCounter].option2}
+                    value={response[questionsCounter].option2}
                     control={<Radio />}
-                    label={questions[questionsCounter].option2}
+                    label={response[questionsCounter].option2}
                   />
                   <FormControlLabel
-                    value={questions[questionsCounter].option3}
+                    value={response[questionsCounter].option3}
                     control={<Radio />}
-                    label={questions[questionsCounter].option3}
+                    label={response[questionsCounter].option3}
+                  />
+                  <FormControlLabel
+                    value={response[questionsCounter].option4}
+                    control={<Radio />}
+                    label={response[questionsCounter].option4}
                   />
                 </RadioGroup>
               </FormControl>
@@ -176,6 +155,7 @@ const Paractice = () => {
             >
               Previous
             </Button>
+
             <Button style={{ background: "#81dd1c" }} onClick={nextQuestion}>
               Next
             </Button>

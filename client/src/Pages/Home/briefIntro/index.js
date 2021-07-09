@@ -11,9 +11,8 @@ const BriefIntro = () => {
 
       <Typography className={`sectionText ${classes.intro}`}>
         Crafted by a team of medical and engineering students, our online ECAT
-        course teaches you all the best techniques for aceing the 5 sections,
-        and takes you through 2,000+ practice questions and 2 full mock exams to
-        maximise your score.
+        course teaches you all the best techniques for aceing the 4 subjects,
+        and takes you through 2,000+ practice questions to maximise your score.
       </Typography>
     </div>
   );

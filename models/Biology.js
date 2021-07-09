@@ -25,6 +25,12 @@ const biologySchema = new mongoose.Schema({
     min: 6,
     max: 50,
   },
+  option4: {
+    type: String,
+    required: true,
+    min: 6,
+    max: 50,
+  },
   answer: {
     type: String,
     required: true,

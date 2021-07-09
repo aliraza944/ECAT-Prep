@@ -4,24 +4,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("../models/User");
-// router to add admin user
-router.get("/admin", async (req, res) => {
-  const password = "123456abc";
-  const salt = await bcrypt.genSalt(10);
-  const hashpassword = await bcrypt.hash(password, salt);
-
-  const user = new Users({
-    email: "admin@admin.com",
-    password: hashpassword,
-    role: "admin",
-  });
-  try {
-    const saveUser = await user.save();
-  } catch (err) {
-    console.log(err);
-  }
-  res.json("added");
-});
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body.values;
@@ -33,7 +15,7 @@ router.post("/", async (req, res) => {
 
   if (!validate) return res.status(400).send("wrong password");
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.cookie("token", token).send({ name: user.name });
+  res.cookie("token", token, { maxAge: 360000 }).send({ name: user.name });
 
   res.end();
 });

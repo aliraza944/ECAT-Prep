@@ -17,13 +17,12 @@ const ContactUsSection = () => {
             </Typography>
 
             <Typography variant="p" className="sectionText" component="p">
-              UCAT (UKCAT) Ninja is an online UCAT (UKCAT) preparation course
-              and question bank rolled into one. We've got loads of tutorials
-              that teach you the best techniques for each section, and our
-              online interface has over 2,000 UCAT (UKCAT)-style questions for
-              you to practice.
+              ECAT Ninja is an online preparation course and question bank
+              rolled into one. We've got loads of questions that teach you the
+              best techniques for each subject, and our online interface has
+              over 2,000 MCAT (ECAT)-style questions for you to practice.
             </Typography>
-            <MUIButton text="Sign up" />
+            <MUIButton text="Sign up for free" />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>

@@ -18,12 +18,11 @@ const ProgressPage = () => {
         <SectionIntro
           title={` HEY THERE, ${
             user.name ? user.name : "Stranger"
-          }. WELCOME TO UCAT (UKCAT) NINJA!`}
-          intro="UCAT (UKCAT) Ninja is an online UCAT (UKCAT) course and question
-            bank rolled into one. It was made with ♥ by 6med, a small startup
-            built and run exclusively by medical students. We really hope you
+          }. WELCOME TO ECAT NINJA!`}
+          intro="ECAT Ninja is an online ECAT preparations and question
+            bank rolled into one. It was made with ♥ by colaborations of engineering and medical  students. We really hope you
             enjoy using the website and find it useful - we remember how
-            daunting the medical applications process was, and we're thrilled
+            daunting the engineering and medical applications process was, and we're thrilled
             that you've allowed us to be a part of your journey. Good luck! Here
             is the link to our help center"
         />

@@ -91,8 +91,10 @@ const SubjectDashBoard = () => {
                   <ParacticeDojoCards
                     completed={
                       response &&
-                      (response[subject].answered / 100) *
-                        response[subject].total
+                      parseInt(
+                        (response[subject].answered / 100) *
+                          response[subject].total
+                      )
                     }
                     total={response && response[subject].total}
                   />
@@ -104,7 +106,10 @@ const SubjectDashBoard = () => {
                   />
                 </Grid>
               </Grid>
-              <Link to={`/paractice/${subject}`} className="link">
+              <Link
+                to={`/paractice/${subject}?chapter=${chapters[0]}&part=parta`}
+                className="link"
+              >
                 <Button className={classes.dojoBtn}>Continue Paractice</Button>
               </Link>
             </Paper>

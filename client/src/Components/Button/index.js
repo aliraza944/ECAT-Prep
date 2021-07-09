@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme) => ({
   myButton: {
     margin: theme.spacing(1),
     textTransform: "upercase",
-    border: "2px solid #fff",
-    padding: "7px 40px",
+    border: "1px solid #fff",
+    padding: "5px 30px",
     color: "#fff",
     borderRadius: "4px",
     minWidth: "64px",
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "white",
       color: theme.palette.secondary.main,
-      border: `2px solid ${theme.palette.secondary.main}`,
+      border: `1px solid ${theme.palette.secondary.main}`,
     },
   },
 }));

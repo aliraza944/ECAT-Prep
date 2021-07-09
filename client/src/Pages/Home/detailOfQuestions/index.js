@@ -49,8 +49,8 @@ const DetialOfQuestions = () => {
           component="subtitle1"
         >
           We've got a ton of practice questions for each of the main sections of
-          the UCAT (UKCAT). Our online practice interface mimics the format of
-          the actual UCAT (UKCAT), so you'll get valuable experience with the
+          the ECAT and MCAT. Our online practice interface mimics the format of
+          the actual exam, so you'll get valuable experience with the
           computer-based exam, and when you've done a set of questions, you'll
           be able to see full explanations written by our team of medical
           students.

@@ -7,13 +7,13 @@ export default function BestTechniques() {
     <div>
       <Section
         title="THE BEST TECHNIQUES FOR EACH SECTION."
-        description=" Our wonderful team of UCAT Exams Ninja instructors have written
-              comprehensive guides to each of the 5 sections of the UCAT
-              (UKCAT). You'll learn top tips for tackling the Verbal Reasoning,
+        description=" Our wonderful team of ECAT & MCAT Exams Ninja instructors have written
+              comprehensive questions to each of the 4 subjects of the ECAT and MCAT
+              . You'll learn top tips for tackling the Physics numericals,
               strategies to nail Decision Making, great techniques to maximise
-              your mark in Quantitative Reasoning, systematic methods to make
-              sense of Abstract Reasoning, and the best ways to answer the
-              seemingly arbitrary Situational Judgment questions."
+              your mark in Chemistry, systematic methods to make
+              sense of Maths, and the best ways to answer the
+              biology subject."
         imageUrl={bestTechniquesSection}
       />
     </div>

@@ -44,7 +44,9 @@ export default function ButtonAppBar() {
             color="inherit"
             aria-label="menu"
           >
-            <CloseIcon />
+            <Link className="link" to={`/home/${subject}`}>
+              <CloseIcon />
+            </Link>
           </IconButton>
         </Toolbar>
       </AppBar>

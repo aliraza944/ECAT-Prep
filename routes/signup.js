@@ -22,7 +22,6 @@ router.post("/", async (req, res) => {
     });
     try {
       await user.save();
-      console.log(user);
     } catch (error) {
       res.status(400).send(error);
     }

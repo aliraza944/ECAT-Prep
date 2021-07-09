@@ -17,9 +17,12 @@ const HeroSection = () => {
           your online Ecat preparaton course and question bank
         </Typography>
         <Box className={classes.heroButton}>
-          <MUIButton text="Sign Up"></MUIButton>
+          <Link className="link" to="/signup">
+            {" "}
+            <MUIButton text="Sign Up for free"></MUIButton>
+          </Link>
           <Link className="link" to="/home">
-            <MUIButton text="View Demo"></MUIButton>
+            <MUIButton text="try demo for free"></MUIButton>
           </Link>
         </Box>
         <div className={classes.heroContainer}>

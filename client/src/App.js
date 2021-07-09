@@ -6,12 +6,14 @@ import { ThemeProvider } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ContextProvider } from "./Store";
 import { Suspense } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const Progress = React.lazy(() => import("./Pages/ProgressPage"));
 const ParacticePage = React.lazy(() => import("./Pages/Paractice"));
 const LogInPage = React.lazy(() => import("./Pages/LogIn"));
 const SignUpPage = React.lazy(() => import("./Pages/SignUp"));
 const SubjectPage = React.lazy(() => import("./Pages/SubjectDashboard"));
 const LazyAdmin = React.lazy(() => import("./Pages/Admin"));
+
 function App() {
   return (
     <ContextProvider>
@@ -24,7 +26,17 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Suspense fallback={<h1>loding</h1>}>
+              <Suspense
+                fallback={
+                  <div
+                    className="spinner"
+                    style={{ width: "100%", height: "100vh" }}
+                  >
+                    (
+                    <CircularProgress size="4rem" color="secondary" />
+                  </div>
+                }
+              >
                 <Route exact path="/home">
                   <Progress />
                 </Route>

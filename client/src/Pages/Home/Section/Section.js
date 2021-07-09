@@ -27,7 +27,7 @@ export default function Section(props) {
             <Typography variant="p" className="sectionText" component="p">
               {description}
             </Typography>
-            <MUIButton text="Sign up" />
+            <MUIButton text="Sign up for free" />
           </Paper>
         </Grid>
         <Grid item md={6} sm={12}>

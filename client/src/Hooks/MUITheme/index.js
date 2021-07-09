@@ -27,7 +27,7 @@ const theme = createMuiTheme({
     MuiCssBaseline: {
       "@global": {
         ".subtitle": {
-          fontWeight: "bold",
+          fontWeight: "400",
           textTransform: "uppercase",
           marginBottom: "10px",
           textAlign: "Center",

@@ -9,6 +9,7 @@ const loginRouter = require("./routes/login");
 const cookieParser = require("cookie-parser");
 const questionRouter = require("./routes/postQuestions");
 const progressRouter = require("./routes/getProgress");
+const path = require("path");
 app.use(express.json({ extended: false }));
 app.use(
   cors({
@@ -50,10 +51,12 @@ app.use((error, req, res, next) => {
     },
   });
 });
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.get("*", (req, res) => {
+  res.sendFile(pathh.resolve(__dirname, "client", "build", "index.html"));
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`running on port ${port}`));

@@ -8,8 +8,8 @@ const User = require("../models/User");
 router.post("/", async (req, res) => {
   const { email, password } = req.body.values;
 
-  const user = await Users.findOne({ email: email }).select("+password");
-  if (!user) return res.send("wrong email");
+  const user = await User.findOne({ email: email }).select("+password");
+  if (!user) return res.send("wrong email or password");
 
   const validate = await bcrypt.compare(password, user.password);
 
@@ -45,7 +45,7 @@ const AdminEmail = "ali.raza944@hotmail.com";
 router.post("/admin", async (req, res) => {
   const { email, password } = req.body.values;
 
-  const user = await Users.findOne({ email: email }).select("+password");
+  const user = await User.findOne({ email: email }).select("+password");
   if (!user) return res.send("wrong email");
   if (!AdminEmail === user.email) {
     return res.send("you do not have permission to login here");

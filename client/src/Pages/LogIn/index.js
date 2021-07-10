@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import axios from "axios";
 import { useUpdateLogin } from "../../Store";
 import { useHistory } from "react-router";
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LogIn() {
   const [spinner, setSpinner] = useState(false);
+  const [loginError, setLoginError] = useState();
   const updateUser = useUpdateLogin();
   const classes = useStyles();
   const history = useHistory();
@@ -65,10 +67,13 @@ export default function LogIn() {
           }
         );
 
-        if (res) {
+        if (res.data.name) {
           setSpinner(false);
           updateUser(res.data);
           history.push("/home");
+        } else {
+          setLoginError(res.data);
+          setSpinner(false);
         }
       } catch (error) {
         if (error) throw error;
@@ -81,6 +86,21 @@ export default function LogIn() {
       <Naviagtion demo />
       <>
         <div className={classes.formContainer}>
+          {loginError && (
+            <div
+              style={{
+                fontSize: "1.5rem",
+                padding: "10px",
+                borderRadius: "8px",
+                margin: "0 0 10px 0",
+
+                color: "white",
+                backgroundColor: "red",
+              }}
+            >
+              {loginError}
+            </div>
+          )}
           <form
             className={classes.root}
             onSubmit={formik.handleSubmit}

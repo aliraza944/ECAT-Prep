@@ -13,11 +13,13 @@ const path = require("path");
 app.use(express.json({ extended: false }));
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://ecatninja.herokuapp.com", "http://localhost:3000"],
     methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS", "HEAD"],
     credentials: true,
   })
 );
+app.options("*", cors());
+
 app.use(cookieParser());
 mongoose
   .connect(process.env.DB_CONNECTION, {

@@ -49,7 +49,7 @@ app.use((error, req, res, next) => {
   });
 });
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("/client/build"));
   app.get("*", (req, res) => {
     res.sendFile(pathh.resolve(__dirname, "client", "build", "index.html"));
   });

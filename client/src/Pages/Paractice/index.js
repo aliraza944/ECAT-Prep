@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ParacticeNav from "./ParacticeNav";
 import { Paper, Button } from "@material-ui/core";
 import Radio from "@material-ui/core/Radio";
@@ -26,7 +26,6 @@ const Paractice = () => {
   const { loading, response } = useFetch(
     `http://localhost:5000/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`
   );
-  console.log(response);
   const handleShowAnswer = () => {
     setShowAnswer(true);
     setModalOpen(false);
@@ -60,7 +59,7 @@ const Paractice = () => {
   const submitAnswers = async () => {
     if (modalOpen) {
       try {
-        const res = await axios.post(
+        await axios.post(
           `http://localhost:5000/postquestions/answers?subject=${subject}&chapter=${chapter}&part=${part}`,
           {
             answer,
@@ -72,10 +71,6 @@ const Paractice = () => {
             withCredentials: true,
           }
         );
-
-        if (res) {
-          console.log(res);
-        }
       } catch (error) {
         if (error) throw error;
       }

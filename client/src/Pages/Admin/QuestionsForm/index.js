@@ -100,7 +100,6 @@ const QuestionsForm = () => {
         if (res) {
           setSpinner(false);
           setResponse(res.data);
-          console.log(res);
         }
       } catch (error) {
         if (error) throw error;

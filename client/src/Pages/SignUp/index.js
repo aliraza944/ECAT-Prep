@@ -69,11 +69,9 @@ export default function SignUp() {
             withCredentials: true,
           }
         );
-        console.log(res);
         setResponse(res.data);
         if (res) {
           setSpinner(false);
-          console.log(response);
         }
       } catch (error) {
         if (error) throw error;

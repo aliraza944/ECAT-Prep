@@ -12,7 +12,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useLogin, useUpdateAdmin } from "../../../Store";
+import { useUpdateAdmin } from "../../../Store";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 export default function AdminLogin() {
   const [spinner, setSpinner] = useState(false);
   const updateAdmin = useUpdateAdmin();
-  const user = useLogin();
   const classes = useStyles();
   const formik = useFormik({
     initialValues: { email: "", password: "" },
@@ -66,7 +65,6 @@ export default function AdminLogin() {
         if (res) {
           setSpinner(false);
           updateAdmin(res.data);
-          console.log(res);
         }
       } catch (error) {
         if (error) throw error;

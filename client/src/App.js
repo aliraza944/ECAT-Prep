@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Home from "./Pages/Home";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./Hooks/MUITheme";

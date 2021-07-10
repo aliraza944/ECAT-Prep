@@ -58,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItem: "center",
-    backgroundColor: "#40a3ff",
     "& *": {
       color: "white",
       width: "100px",

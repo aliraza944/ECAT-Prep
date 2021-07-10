@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     borderRadius: "4px",
     minWidth: "64px",
+    width: "280px",
     fontSize: "1.2rem",
     letterSpacing: "0.07rem",
 

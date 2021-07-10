@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import axios from "axios";
 import { useUpdateLogin } from "../Store";
 export const useLogout = () => {

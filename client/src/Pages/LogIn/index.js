@@ -124,7 +124,7 @@ export default function LogIn() {
               <OutlinedInput
                 style={{ overflowX: "unset" }}
                 fullWidth
-                id="email"
+                id="password"
                 label="Password"
                 type="password"
                 name="password"

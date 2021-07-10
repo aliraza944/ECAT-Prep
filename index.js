@@ -33,6 +33,13 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/postquestions", questionRouter);
 app.use("/progress", progressRouter);
+
+app.use("/", express.static("client/build"));
+// Step 2:
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
+
 //error middleware
 app.use((req, res, next) => {
   const error = new Error("Not Found");
@@ -49,11 +56,6 @@ app.use((error, req, res, next) => {
   });
 });
 // Step 1:
-app.use("/", express.static("client/build"));
-// Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
 
 // if (process.env.NODE_ENV === "production") {
 

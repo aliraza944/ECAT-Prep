@@ -29,9 +29,6 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/postquestions", questionRouter);

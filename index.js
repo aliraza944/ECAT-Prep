@@ -48,15 +48,16 @@ app.use((error, req, res, next) => {
     },
   });
 });
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
-if (process.env.NODE_ENV === "production") {
-  // Step 1:
-  app.use(express.static(path.resolve(__dirname, "./client/build")));
-  // Step 2:
-  app.get("*", function (request, response) {
-    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+
+// }
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`running on port ${port}`));

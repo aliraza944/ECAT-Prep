@@ -9,9 +9,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+    backgroundColor: "inherit",
+    border: "none",
+    boxShadow: "none",
   },
   detailButtons: {
     display: "flex",
@@ -40,13 +42,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "80px",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "80%",
+      width: "100%",
     },
   },
   sectionImage: {
     width: "100%",
-    border: "4px solid #ffff",
-    borderRadius: "40px ",
   },
 }));
 export default useStyles;

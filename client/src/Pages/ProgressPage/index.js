@@ -13,7 +13,7 @@ const ProgressPage = () => {
     <div className={classes.root}>
       <Navigation demo></Navigation>
 
-      <DemoAlert />
+      {!user.name && <DemoAlert />}
       <div className={classes.demoContent}>
         <SectionIntro
           title={` HEY THERE, ${

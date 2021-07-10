@@ -12,8 +12,8 @@ const ContactUsSection = () => {
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} color="transparent">
-            <Typography variant="h2" component="h2">
-              ECAT Prep
+            <Typography className="subtitle" variant="h2" component="h2">
+              ECAT NINJA
             </Typography>
 
             <Typography variant="p" className="sectionText" component="p">

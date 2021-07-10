@@ -31,7 +31,7 @@ export default function CurrentProgressCard(props) {
                 color="textSecondary"
                 gutterBottom
               >
-                {`Progress:${props.progress}%`}
+                {`Progress:${props.progress ? props.progress : 0}%`}
               </Typography>
             </div>
             <Link className="link" to={props.link}>

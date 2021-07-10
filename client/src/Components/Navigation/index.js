@@ -28,11 +28,11 @@ function Navigation(props) {
           elevation={0}
           className={`${classes.appBar} ${props.demo && classes.demoNav}`}
         >
-          <Toolbar>
+          <Toolbar className={props.landing && classes.navigationToolbar}>
             {" "}
             <Typography variant="h5" noWrap className={classes.title}>
               <Link className="link" to="/">
-                Ecat Ninja
+                ECAT NINJA
               </Link>
             </Typography>
             <NavElements home={props.home} isLoggedIn={user} />

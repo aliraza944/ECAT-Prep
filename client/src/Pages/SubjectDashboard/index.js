@@ -13,6 +13,8 @@ import Footer from "../../Components/Footer";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../Hooks/useFetch";
+import { useLogin } from "../../Store";
+
 const mySubjects = ["physics", "chemistry", "math", "biology"];
 const chapterTitle = [
   "Chapter 1 & 2",
@@ -44,8 +46,8 @@ const SubjectDashBoard = () => {
   const classes = useStyles();
   const { subject } = useParams();
   const history = useHistory();
-  const { loading, response } = useFetch(`http://localhost:5000/progress`);
-  response && console.log(response[subject]);
+  const user = useLogin();
+  const { response } = useFetch(`http://localhost:5000/progress`);
 
   if (!mySubjects.includes(subject)) {
     history.push("/");
@@ -53,7 +55,7 @@ const SubjectDashBoard = () => {
   return (
     <div>
       <Navigation demo dash />
-      <DemoAlert />
+      {!user.name && <DemoAlert />}
       <SubjectDashBoardHeader subject={subject} />
       <div className={classes.subjectDashBoardContent}>
         <SectionIntro

@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProgressStats() {
   const classes = useStyles();
-  const { loading, response } = useFetch(`http://localhost:5000/progress`);
+  const { response } = useFetch(`http://localhost:5000/progress`);
 
   return (
     <div className={classes.root}>
-      <Grid container alignItems="top" justify="center" spacing={2}>
+      <Grid container alignItems="flex-start" justify="center" spacing={2}>
         <Grid item md={8} xs={12}>
           <Paper className={classes.paper}>
             <h2> Currently Working on</h2>

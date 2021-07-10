@@ -32,7 +32,7 @@ export default function Section(props) {
         </Grid>
         <Grid item md={6} sm={12}>
           <Paper
-            elevation="0"
+            elevation={0}
             style={{ overflow: "hidden" }}
             className={classes.paper}
           >

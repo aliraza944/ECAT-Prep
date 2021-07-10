@@ -43,11 +43,7 @@ const DetialOfQuestions = () => {
         <Typography className={`subtitle ${classes.sectionTitle}`} variant="h2">
           2,000+ PRACTICE QUESTIONS
         </Typography>
-        <Typography
-          variant="h2"
-          className={classes.sectionText}
-          component="subtitle1"
-        >
+        <Typography variant="h2" className={classes.sectionText}>
           We've got a ton of practice questions for each of the main sections of
           the ECAT and MCAT. Our online practice interface mimics the format of
           the actual exam, so you'll get valuable experience with the
@@ -62,7 +58,7 @@ const DetialOfQuestions = () => {
       <Grid container style={{ justifyContent: "center" }}>
         <Grid item md={12} lg={8}>
           <Paper className={classes.paper} color="transparent">
-            <div classname={classes.sectionImageContainer}>
+            <div className={classes.sectionImageContainer}>
               <img
                 className={`responsiveImage ${classes.sectionImage}`}
                 src={detailOfQuestions}

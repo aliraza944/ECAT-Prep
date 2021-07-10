@@ -13,7 +13,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useLogin, useUpdateLogin } from "../../Store";
+import { useUpdateLogin } from "../../Store";
 import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const [spinner, setSpinner] = useState(false);
   const updateUser = useUpdateLogin();
-  const user = useLogin();
   const classes = useStyles();
   const history = useHistory();
   const formik = useFormik({
@@ -69,7 +68,6 @@ export default function LogIn() {
         if (res) {
           setSpinner(false);
           updateUser(res.data);
-          console.log(user);
           history.push("/home");
         }
       } catch (error) {

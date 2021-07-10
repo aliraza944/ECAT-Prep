@@ -17,7 +17,11 @@ const DemoAlert = () => {
   const classes = useStyles();
   return (
     <div>
-      <Typography className={classes.demoAlert} variant="p" component="p">
+      <Typography
+        className={classes.demoAlert}
+        variant="subtitle2"
+        component="p"
+      >
         This is a demo account, so its features are limited.{" "}
         <Link to="/signup" className="link">
           {" "}

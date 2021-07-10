@@ -42,13 +42,20 @@ router.get("/", userVerify, async (req, res) => {
         { chapter: 0, chapterPart: 0 }
       )
       .limit(4);
+    res.json(questions);
   } else {
     questions = await eval(subject).find(
       { chapter: chapter, chapterPart: part },
       { chapter: 0, chapterPart: 0 }
     );
+    questions.length > 0
+      ? res.json(questions)
+      : res.send({
+          error:
+            "No questions for this section added please try some other time",
+        });
   }
-  res.json(questions);
+
   res.end();
 });
 

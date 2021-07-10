@@ -26,7 +26,7 @@ const Paractice = () => {
   const { loading, response } = useFetch(
     `http://localhost:5000/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`
   );
-
+  console.log(response);
   const handleShowAnswer = () => {
     setShowAnswer(true);
     setModalOpen(false);
@@ -99,7 +99,14 @@ const Paractice = () => {
           <CircularProgress className="spinner" size="2rem" color="primary" />
         )}
       </div>
-      {response ? (
+
+      {response && response.error && (
+        <div className={classes.noQuestions}>
+          <h2 className={classes.qeustionTitle}>{response.error}</h2>
+        </div>
+      )}
+
+      {response && !response.error ? (
         <div className={classes.paracticeContent}>
           <Paper className={classes.paper} elevation={0}>
             {showAnswer && (

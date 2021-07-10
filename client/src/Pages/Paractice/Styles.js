@@ -1,19 +1,39 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  "@global": {
+    body: {
+      backgroundColor: "white",
+    },
+  },
   paracticeContent: {
     width: "100%",
-    // height: "95v h",
   },
   qeustionTitle: {
-    fontSize: "1.5em",
+    fontSize: "1.2rem",
     fontWeight: "700",
-    color: "#3e3e3e",
     letterSpacing: "0.05em",
   },
+  noQuestions: {
+    width: "100%",
+    height: "100vh ",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    color: "#6f6f6f",
+    textTransform: "uppercase",
+  },
   paperContent: {
-    padding: "10em 0 0 0",
-    width: "60%",
+    padding: "1em 0 0 0",
+    width: "80%",
+    fontSize: "2rem",
+
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "2.4rem",
+      padding: "3em 0 0 0",
+      width: "60%",
+    },
   },
   paper: {
     display: "flex",
@@ -23,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 0 100px 0",
   },
   qustionsAmount: {
-    fontSize: "1.2em",
+    fontSize: "1rem",
     color: "#6f6f6f",
     textTransform: "uppercase",
     marginBottom: "60px",

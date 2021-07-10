@@ -3,7 +3,7 @@ const router = express.Router();
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Users = require("../models/User");
+const User = require("../models/User");
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body.values;
@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
 
   if (!validate) return res.status(400).send("wrong password");
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.cookie("token", token, { maxAge: 360000 }).send({ name: user.name });
+  res.cookie("token", token).send({ name: user.name });
 
   res.end();
 });
@@ -25,10 +25,13 @@ router.get("/status", async (req, res) => {
   if (req.cookies.token) {
     const user = jwt.verify(req.cookies.token, process.env.TOKEN_SECRET);
 
-    const newuser = await Users.findOne({ _id: user._id });
+    const newuser = await User.findOne({ _id: user._id });
 
-    res.send({ email: newuser.email, role: newuser.role });
-  } else res.status(400);
+    res.send({ name: newuser.name });
+  } else {
+    res.status(400);
+  }
+  res.end();
 });
 router.get("/logout", (req, res) => {
   res.clearCookie("token");

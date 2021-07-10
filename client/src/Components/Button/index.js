@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   myButton: {
     margin: theme.spacing(1),
     textTransform: "upercase",
-    border: "1px solid #fff",
+    border: "1px solid #0000",
     padding: "5px 30px",
     color: "#fff",
     borderRadius: "4px",

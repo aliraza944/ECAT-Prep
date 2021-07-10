@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  navigationToolbar: {
+    margin: "0 0px 0 0px",
+    [theme.breakpoints.up("lg")]: {
+      margin: "0 100px 0 100px",
+    },
+  },
   menuButton: {
     justifyContent: "flex-end",
     marginRight: theme.spacing(0),

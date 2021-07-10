@@ -3,14 +3,14 @@ import { Typography, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Navigation from "../../../Components/Navigation";
 import MUIButton from "../../../Components/Button";
-import heroLanding from "../../../Images/heroLanding.jpg";
+import heroLanding from "../../../Images/heroLanding.png";
 
 import useStyles from "./Style";
 const HeroSection = () => {
   const classes = useStyles();
   return (
     <div className={classes.heroSection}>
-      <Navigation home />
+      <Navigation home landing />
 
       <Box className={classes.heroContnet}>
         <Typography variant="h2" className="subtitle" component="h2">

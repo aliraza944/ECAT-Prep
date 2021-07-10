@@ -31,7 +31,7 @@ export default function ButtonAppBar() {
         <Toolbar>
           <Link to="/" style={{ flexGrow: "1" }} className="link">
             <Typography variant="h6" className={classes.title}>
-              ECAT Prep
+              ECAT NINJA
             </Typography>
           </Link>
 

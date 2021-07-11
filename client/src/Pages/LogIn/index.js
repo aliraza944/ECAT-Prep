@@ -55,7 +55,7 @@ export default function LogIn() {
       setSpinner(true);
       try {
         const res = await axios.post(
-          "http://localhost:5000/login",
+          "/login",
           {
             values,
           },

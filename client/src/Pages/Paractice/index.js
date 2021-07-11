@@ -24,7 +24,7 @@ const Paractice = () => {
   const { chapter, part } = queryString.parse(location.search);
   const { subject } = useParams();
   const { loading, response } = useFetch(
-    `http://localhost:5000/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`
+    `/postquestions?subject=${subject}&chapter=${chapter}&part=${part}`
   );
   const handleShowAnswer = () => {
     setShowAnswer(true);

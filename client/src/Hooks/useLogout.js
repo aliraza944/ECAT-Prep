@@ -6,7 +6,7 @@ export const useLogout = () => {
   const handleLogout = useCallback(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/login/logout",
+        "/login/logout",
 
         {
           headers: {

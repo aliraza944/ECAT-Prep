@@ -5,7 +5,7 @@ import axios from "axios";
 const LoginStatus = () => {
   const updateUser = useUpdateLogin();
   const getLongInStatus = async () => {
-    const res = await axios("http://localhost:5000/login/status", {
+    const res = await axios("/login/status", {
       headers: {
         "Content-Type": "application/json",
       },

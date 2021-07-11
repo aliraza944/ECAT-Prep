@@ -60,7 +60,7 @@ const Paractice = () => {
     if (modalOpen) {
       try {
         await axios.post(
-          `http://localhost:5000/postquestions/answers?subject=${subject}&chapter=${chapter}&part=${part}`,
+          `/postquestions/answers?subject=${subject}&chapter=${chapter}&part=${part}`,
           {
             answer,
           },

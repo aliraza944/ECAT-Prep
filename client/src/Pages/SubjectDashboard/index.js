@@ -47,7 +47,7 @@ const SubjectDashBoard = () => {
   const { subject } = useParams();
   const history = useHistory();
   const user = useLogin();
-  const { response } = useFetch(`http://localhost:5000/progress`);
+  const { response } = useFetch(`/progress`);
 
   if (!mySubjects.includes(subject)) {
     history.push("/");

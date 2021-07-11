@@ -58,7 +58,7 @@ export default function SignUp() {
       setSpinner(true);
       try {
         const res = await axios.post(
-          "http://localhost:5000/signup",
+          "/signup",
           {
             values,
           },

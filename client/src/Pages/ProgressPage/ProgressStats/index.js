@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProgressStats() {
   const classes = useStyles();
-  const { response } = useFetch(`http://localhost:5000/progress`);
+  const { response } = useFetch(`/progress`);
 
   return (
     <div className={classes.root}>

@@ -85,7 +85,7 @@ const QuestionsForm = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/postquestions",
+          "/postquestions",
           {
             values,
           },

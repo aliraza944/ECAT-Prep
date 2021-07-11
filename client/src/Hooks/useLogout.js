@@ -17,6 +17,7 @@ export const useLogout = () => {
       );
 
       await updateUser(response.data);
+      response.data && window.location.reload();
     } catch (err) {
       if (err) throw err;
     }

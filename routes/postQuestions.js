@@ -36,7 +36,7 @@ router.get("/", userVerify, async (req, res) => {
   const { subject, chapter, part } = req.query;
   let questions;
   if (req.user === "demo") {
-    questions = await eval(subject)
+    questions = await physics
       .find(
         { chapter: "ch12", chapterPart: "parta" },
         { chapter: 0, chapterPart: 0 }
